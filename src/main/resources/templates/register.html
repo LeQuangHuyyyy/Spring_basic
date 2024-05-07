@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body class="bg-slate-100">
+<div class="flex flex-col justify-center lg:px-8 min-h-full px-6 py-12">
+    <div class="mt-5 mx-auto max-w-sm w-full">
+        <form class="bg-white overflow-hidden p-10 rounded-xl shadow-lg space-y-6" th:action="@{/register}"
+              th:object="${user}"
+              method="post">
+            <div class="sm:mx-auto sm:w-full sm:max-w-sm">
+                <img class="mx-auto h-20 w-auto" alt="...." src="/image/account.png">
+            </div>
+
+            <h4 class="font-bold leading-9 mt-10 text-center text-gray-900 text-xl tracking-tight">Sign in to your
+                account</h4>
+
+            <div>
+                <label class="block text-sm font-medium leading-6 text-gray-900" for="username">Email</label>
+                <div class="mt-2">
+                    <input th:field="*{email}"
+                           class="ring-1 block w-full rounded-md py-1.5 text-gray-900 shadow-sm border-0 ring-inset ring-gray-300 px-3 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                           id="username" name="username" type="email" placeholder="Email">
+                </div>
+            </div>
+
+            <div>
+                <label class="block text-sm font-medium leading-6 text-gray-900" for="username">Full Name</label>
+                <div class="mt-2">
+                    <input th:field="*{fullname}"
+                           class="ring-1 block w-full rounded-md py-1.5 text-gray-900 shadow-sm border-0 ring-inset ring-gray-300 px-3 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                           id="fullname" name="fullname" type="text" placeholder="Full Name">
+                </div>
+            </div>
+
+            <div>
+                <label class="block text-sm font-medium leading-6 text-gray-900" for="password">Password</label>
+                <div class="mt-2">
+                    <input th:field="*{password}"
+                           class="ring-1 block w-full rounded-md py-1.5 text-gray-900 shadow-sm border-0 ring-inset ring-gray-300 px-3 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                           id="password" name="password" type="password" placeholder="Password">
+                </div>
+            </div>
+
+            <div>
+                <label class="block text-sm font-medium leading-6 text-gray-900" for="password">Confirm Password</label>
+                <div class="mt-2">
+                    <input
+                            class="ring-1 block w-full rounded-md py-1.5 text-gray-900 shadow-sm border-0 ring-inset ring-gray-300 px-3 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                            name="ConfirmPassword" type="password" placeholder=" Confirm Password">
+                </div>
+            </div>
+
+            <div th:if="${message}">
+                <p style="color: green" th:text="${message}"></p>
+            </div>
+
+            <div th:if="${error}">
+                <p style="color: red" th:text="${error}"></p>
+            </div>
+            <div>
+                <input class="bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white flex w-full justify-center rounded-md  shadow-sm ring-1 ring-inset hover:bg-indigo-500 focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                       type="submit" value="Create">
+            </div>
+            <p class="text-center">Already have an account?
+                <a style="color: blue" href="/LoginPage">Login</a>
+            </p>
+        </form>
+    </div>
+</div>
+</body>
+</html>
+
